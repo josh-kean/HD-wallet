@@ -11,8 +11,6 @@ import hashlib
     #a = 0
     #b = 7
     #order of secp256k1 is  FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE BAAEDCE6 AF48A03B BFD25E8C D0364141
-#ser32(i) serializes a 32 bit, unsigned integer as a 4 byte sequence
-#ser256(p) serializes the integer p as a 32 byte sequence
 #serp(p) serualizes coordinate pair x,y as a byte sequence using (02 or 03)||x depending on if y is + or -
 #parse256(p) interprets a 32 byte sequence as a 256 bit number
 #chaincode is an additional 32 bytes (256 bits) of entropy applied to both pub and pri keys

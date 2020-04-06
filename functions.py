@@ -1,5 +1,5 @@
 import hmac as h
-from basics import point, ser32, ser256, serp, parse256
+from basics import point, ser, ser32, ser256, serp, parse256
 
 n=int('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141',16)
 
@@ -15,9 +15,9 @@ def split_I(I):
 
 def CKDpriv(kp, cp, index): #kp, cp, and index are all integers
     if index > (2**31)-1:
-        data = f'0x00{ser256(kp)}{ser32(index)}'
+        data = f'0x00{ser(kp, 256)}{ser(index, 32)}'
     else:
-        data = f'{serp(point(kp))}{ser32(index)}'
+        data = f'{serp(point(kp))}{ser(index, 32)}'
     I = HMAC_SHA512(cp, data)
     Il, Ir = split_I(I)
     ki = f'{parse256(Il)}{kp%n}' #n is order of secpk256
