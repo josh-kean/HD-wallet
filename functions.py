@@ -1,12 +1,13 @@
-import hmac as h
+import hmac
 from basics import point, ser, ser32, ser256, serp, parse256
 
 n=int('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141',16)
 
 
 def HMAC_SHA512(k, data):
-    #function that does hmac
-    return '0x1010'
+    #function that does hmac using SHA512
+    b = hmac.new(k, msg=data, digestmod='SHA512').digest()
+    return format(int.from_bytes(b, byteorder='big'), '0512b')
 
 def split_I(I):
     l = len(I)//2
