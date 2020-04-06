@@ -1,16 +1,12 @@
 from functions import split_I, CKDpriv, CKDpub, N
 from basics import parse256
 import hmac as h
-from mnemonic_phrase import mnemonic
+import mnemonic_phrase
 import hashlib
 
 def mnemonic_gen(phrase=None): #considering returning an iterable object so the binary seed and the word list can be returned from this function
-    if phrase:
-        main = mnemonic.HashingFunctions(phrase)
-    else:
-        main = mnemonic.HashingFunctions()
-    main.create_binary_seed()
-    return main.binary_seed
+    seed_and_phrase = mnemonic_phrase.new_seed(phrase)
+    return seed_and_phrase
 
 def master_key(b_seq):
     b_seq = b_seq.encode('utf-8')
